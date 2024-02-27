@@ -16,7 +16,8 @@ look like, and how to extend the framework with custom test libraries like `Requ
 Demo package
 ========================
 
-To get the demo webApp navigate to `cypress-realworld-app` and follow the README file instructions.
+To get the demo webApp `cypress-realworld-app` clone https://github.com/cypress-io/cypress-realworld-app/tree/v1.0.18
+and follow the README file instructions.
 
 __ `running demo`_
 
