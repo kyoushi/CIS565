@@ -89,7 +89,9 @@ Running tests
 
 Test cases are executed with the ``robot`` command::
 
-    robot keyword_driven.robot
+    robot test_name.robot
+    or
+    python -m robot -d Results test_name.robot
 
 .. note:: If you are using Robot Framework 2.9 or earlier, you need to
           use Python interpreter specific command ``pybot``, ``jybot`` or
