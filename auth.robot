@@ -20,6 +20,7 @@ Test Setup    POST    ${api}/testData/seed
 should redirect unauthenticated user to signin page
     # Open the browser and navigate to the "personal" page
     Open Browser    ${host}/personal
+
     # Verify the current URL is the login page
     Get Url    equals    ${host}/signin
 
@@ -27,19 +28,46 @@ should redirect unauthenticated user to signin page
 should redirect to the home page after login
     # Open the browser and navigate to the login page
     Open Browser    ${host}/signin
+
     # Fill in username and password
     Fill Text    id=username    Katharina_Bernier
     Fill Text    id=password    s3cret
     # Click the "Sign In" button using its xpath
     ${element} =    Get Element    xpath=//button/span[text()="Sign In"]
     Click    ${element}
+
     # Verify the current URL is the home page
     Get Url    equals    ${host}/
 
-# Test 3: Verify signup, login, onboarding, and logout flow
+# Test 3: Verify remember a user after login
+should remember a user after login
+    # Open the browser and navigate to the login page
+    Open Browser    ${host}/signin
+
+    # Fill in username and password
+    Fill Text    id=username    Katharina_Bernier
+    Fill Text    id=password    s3cret
+    # Click the "Sign In" button using its xpath
+    Click    xpath=//button/span[text()="Sign In"] 
+
+    # Wait until the network activity settles, without this wait, cookie is not captured
+    Wait Until Network Is Idle    timeout=3s
+
+    # Extract "connect.sid" cookie
+    ${cookie}=       Get Cookie    connect.sid
+    # Assert that the cookie's expiration year is 1969 (e.g., not set)
+    Should Be Equal   ${cookie.expires.year}     ${1969}
+    # Click the "Sign out" button from the navigation bar
+    Click    css=[data-test="sidenav-signout"]
+    # Verify the current URL is the login page after successful logout
+    Get Url    equals    ${host}/signin
+
+
+# Test 4: Verify signup, login, onboarding, and logout flow
 should allow a visitor to sign-up, login, and logout
     # Open the browser and navigate to the root page
     Open Browser    ${host}/
+    
     # Click the "Sign Up" link, handling potential navigation issues
     Click    xpath=//a[@href="/signup"]
     ${current_url} =    Get Url
@@ -50,6 +78,7 @@ should allow a visitor to sign-up, login, and logout
     ...  Log To Console    Current URL is ${host}/signup. No action needed.
     # Verify the "Sign Up" title is present
     Get Text    css=[data-test="signup-title"]    contains    Sign Up
+
     # Fill first name
     Fill Text    css=#firstName   ${userInfo}[firstName]
     # Fill last name
@@ -60,6 +89,7 @@ should allow a visitor to sign-up, login, and logout
     Fill Text    css=#password    ${userInfo}[password]
     # Confirm password (assuming the same as password)
     Fill Text    css=#confirmPassword    ${userInfo}[password]
+
     # Send the user account creation request and wait for response
     ${promise} =  Promise To   Wait For Response  matcher=${api}/users    timeout=10s
     Click    css=[data-test="signup-submit"]
@@ -68,6 +98,7 @@ should allow a visitor to sign-up, login, and logout
     Log To Console    ${promise.result().status}
     Log To Console    ${promise.result().request.postData}
     Log To Console    ${promise.result().body}
+
     # Login with the newly created user
     Fill Text    css=#username   ${userInfo}[username]
     Fill Text    css=#password   ${userInfo}[password]
@@ -80,6 +111,7 @@ should allow a visitor to sign-up, login, and logout
     Click    css=[data-test="user-onboarding-next"]
     # Verify the onboarding dialog title indicates "Create Bank Account"
     Get Text    css=[data-test="user-onboarding-dialog-title"]    contains    Create Bank Account
+
     # Fill the bank account information in the onboarding dialog
     Fill Text    css=#bankaccount-bankName-input    The Best Bank
     Fill Text    css=#bankaccount-routingNumber-input   123456789
@@ -104,3 +136,77 @@ should allow a visitor to sign-up, login, and logout
     Click    css=[data-test="sidenav-signout"]
     # Verify the current URL is the login page after successful logout
     Get Url    equals    ${host}/signin
+
+# Test 5: Verify display login errors
+should display login errors
+    Open Browser    ${host}/
+
+    Fill Text    id=username    User
+    Clear Text    id=username
+    Focus    id=password
+    Wait For Elements State    css=#username-helper-text    visible    timeout=5 s
+    Get Text    css=#username-helper-text    contains    Username is required
+
+    Fill Text    id=password    abc
+    Focus    id=username
+    Wait For Elements State    css=#password-helper-text    visible    timeout=5 s
+    Get Text    css=#password-helper-text    contains    Password must contain at least 4 characters
+    Wait For Elements State    css=[data-test="signin-submit"]    disabled    timeout=5 s
+
+# Test 6: Verify display signup errors
+should display signup errors
+    Open Browser    ${host}/signup
+    Fill Text    css=#firstName    User
+    Clear Text    css=#firstName
+    Focus    css=#lastName
+    Wait For Elements State    css=#firstName-helper-text  visible    timeout=5 s
+    Get Text    css=#firstName-helper-text    contains    First Name is required
+
+    Fill Text    css=#lastName    Last
+    Clear Text    css=#lastName
+    Focus    css=#username
+    Wait For Elements State    css=#lastName-helper-text  visible    timeout=5 s
+    Get Text    css=#lastName-helper-text    contains    Last Name is required
+
+    Fill Text    css=#username    Last
+    Clear Text    css=#username
+    Focus    css=#password
+    Wait For Elements State    css=#username-helper-text  visible    timeout=5 s
+    Get Text    css=#username-helper-text    contains    Username is required
+
+    Fill Text    css=#password    password
+    Clear Text    css=#password
+    Focus    css=#confirmPassword
+    Wait For Elements State    css=#password-helper-text  visible    timeout=5 s
+    Get Text    css=#password-helper-text    contains    Enter your password    
+
+    Fill Text    css=#confirmPassword    DIFFERENT PASSWORD
+    Focus    css=#password
+    Wait For Elements State    css=#confirmPassword-helper-text  visible    timeout=5 s
+    Get Text    css=#confirmPassword-helper-text    contains    Password does not match 
+
+    Wait For Elements State    css=[data-test="signup-submit"]    disabled    timeout=5 s
+
+# Test 7: Verify invalid user error
+should error for an invalid user
+    Open Browser    ${host}/signin
+
+    # Fill in username and password
+    Fill Text    id=username    invalidUserName
+    Fill Text    id=password    invalidPa$$word
+    Click    css=[data-test="signin-submit"]
+
+    Wait For Elements State    css=[data-test="signin-error"]    visible    timeout=5 s
+    Get Text    css=[data-test="signin-error"]    contains    Username or password is invalid
+
+# Test 8: Verify invalid password for existing user error
+should error for an invalid password for existing user
+    Open Browser    ${host}/signin
+
+    # Fill in username and password
+    Fill Text    id=username    Tavares_Barrows
+    Fill Text    id=password    INVALID
+    Click    css=[data-test="signin-submit"]
+
+    Wait For Elements State    css=[data-test="signin-error"]    visible    timeout=5 s
+    Get Text    css=[data-test="signin-error"]    contains    Username or password is invalid
