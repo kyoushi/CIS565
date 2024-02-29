@@ -1,0 +1,83 @@
+==============================================================================
+User Settings                                                                 
+==============================================================================
+should redirect to the user settings page after selecting my account  | PASS |
+------------------------------------------------------------------------------
+User Settings page should have a spot to update First Name            | PASS |
+------------------------------------------------------------------------------
+ User Settings page should have a spot to update Last Name            | PASS |
+------------------------------------------------------------------------------
+User Settings page should have a spot to update email                 | PASS |
+------------------------------------------------------------------------------
+User Settings page should have a spot to update phone number          | PASS |
+------------------------------------------------------------------------------
+User settings should have a save button available                     | PASS |
+------------------------------------------------------------------------------
+User should be able to update their First Name in user settings an... | PASS |
+------------------------------------------------------------------------------
+User should be able to update their Last Name in user settings and... | PASS |
+------------------------------------------------------------------------------
+User should be able to update their Email in user settings and sav... | PASS |
+------------------------------------------------------------------------------
+User should be able to update their phone number in user settings ... | PASS |
+------------------------------------------------------------------------------
+User should be able to update all of their settings at once in use... | PASS |
+------------------------------------------------------------------------------
+User Settings                                                         | PASS |
+11 tests, 11 passed, 0 failed
+==============================================================================
+==============================================================================
+Bank Account                                                                  
+==============================================================================
+should redirect to the Bank Accounts page after selecting Bank Acc... | PASS |
+------------------------------------------------------------------------------
+Bank Account Page should have button to create new bank account       | PASS |
+------------------------------------------------------------------------------
+Bank Account Page should have button to delete bank account           | PASS |
+------------------------------------------------------------------------------
+Bank Account Page should redirect the page after hitting create bu... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the spot to ... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a spot that can be filled... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for minimum bank... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the spot to ... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a spot that can be filled... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the Routing ... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the Routing ... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the spot to ... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a spot to fill in Account... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the bank acc... | PASS |
+------------------------------------------------------------------------------
+Create new bank account page should have a helper for the bank acc... | PASS |
+------------------------------------------------------------------------------
+Should be able to Save the new Bank Account                           | PASS |
+------------------------------------------------------------------------------
+Should be able to delete the new bank account                         | PASS |
+------------------------------------------------------------------------------
+Bank Account                                                          | PASS |
+17 tests, 17 passed, 0 failed
+==============================================================================
+==============================================================================
+Auth                                                                          
+==============================================================================
+should redirect unauthenticated user to signin page                   | FAIL |
+No keyword with name 'POST' found.
+------------------------------------------------------------------------------
+should redirect to the home page after login                          | FAIL |
+No keyword with name 'POST' found.
+------------------------------------------------------------------------------
+should allow a visitor to sign-up, login, and logout                  | FAIL |
+No keyword with name 'POST' found.
+------------------------------------------------------------------------------
+Auth                                                                  | FAIL |
+3 tests, 0 passed, 3 failed
+==============================================================================
