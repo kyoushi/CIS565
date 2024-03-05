@@ -1,7 +1,6 @@
 *** Settings ***
 # Import necessary libraries for browser automation, dialog handling, and making HTTP requests
 Library    Browser
-Library    Dialogs
 Library    RequestsLibrary
 
 *** Variables ***
