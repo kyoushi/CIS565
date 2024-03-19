@@ -3,6 +3,7 @@
 Library    Browser
 Library    Dialogs
 Library    RequestsLibrary
+Library    ./lib/CustomLib.py
 
 *** Variables ***
 # Define base URL, API endpoint, and test user information
@@ -23,22 +24,43 @@ Test Setup    Run Multiple Test Setup Steps
 *** Test Cases ***
 User A likes a transaction of User B; User B gets notification that User A liked transaction
     Open Browser    ${host}/signin
-    Find Transaction by senderId     ${user2}[id]   
+    # Find Transaction by senderId     ${user2}[id]   
     # Log To Console  A
-    # Log To Console  ${user1}[username]
-    Log To Console  ${user2}[id]
-    # Log To Console  ${user3}[username]
-    # Log To Console  B
-    # # Login with the newly created user
-    # Fill Text    css=#username   ${userInfo}[username]
-    # Fill Text    css=#password   ${userInfo}[password]
-    #  ${promise} =  Promise To   Wait For Response  matcher=${api}/notifications    timeout=10s
-    # Click    css=[data-test="signin-submit"]
-    # Wait For  ${promise}
-    # # Log To Console    ${promise.result().status}
-    # # Log To Console    ${promise.result().request.postData}
-    # Log To Console    ${promise.result().body}
-    Pause Execution    Press OK button.
+    Fill Text    css=#username   ${user1}[username]
+    Fill Text    css=#password   s3cret
+    Click    css=[data-test="signin-submit"]
+    ${all_transactions}    Get Results From Api    ${api}/testData/transactions
+    ${sender_transactions}    Query Json    ${all_transactions}    senderId    ${user2}[id]
+    ${transaction_id}    Set Variable    ${sender_transactions}[0][id]
+     ${promise} =  Promise To   Wait For Response  matcher=${api}/notifications    timeout=10s
+    Go To    ${host}/transaction/${transaction_id}
+    Wait For  ${promise}
+    ${notfications_results}    Set Variable    ${promise.result().body.results}
+    ${notification_size}    Get Json Length    ${notfications_results}
+    ${ui_notification_size} =    Get Text    css=[data-test="nav-top-notifications-count"]
+    Should be equal            (${notification_size})   (${ui_notification_size})
+    Get Text    css=[data-test*=transaction-like-count]    equals    0
+    Click    css=[data-test*=transaction-like-button]
+    Get Attribute Names       css=[data-test*=transaction-like-button]    contains    disabled
+    Get Text    css=[data-test*=transaction-like-count]    equals    1
+    Click    css=[data-test="sidenav-signout"]
+    Get Url    equals    ${host}/signin
+    Fill Text    css=#username   ${user2}[username]
+    Fill Text    css=#password   s3cret
+    ${promise} =  Promise To   Wait For Response  matcher=${api}/notifications    timeout=10s
+    Click    css=[data-test="signin-submit"]
+    Wait For  ${promise}
+    Go To    ${host}/notifications
+    ${notfications_results}    Set Variable    ${promise.result().body.results}
+    ${notification_size}    Get Json Length    ${notfications_results}
+    ${ui_notification_size} =    Get Text    css=[data-test="nav-top-notifications-count"]
+    Should be equal            (${notification_size})   (${ui_notification_size})
+    ${ui_notifications} =    Get Elements    css=[data-test*=notification-list-item]
+    Get Text    ${ui_notifications}[0]    contains    ${user1}[firstName]
+    Get Text    ${ui_notifications}[0]    contains    liked
+    ${ui_dissmiss} =    Get Elements    css=[data-test*="notification-mark-read"]
+    Click    ${ui_dissmiss}[0]
+    Get Text    css=[data-test="nav-top-notifications-count"]    <    ${ui_notification_size}
 
 *** Keywords ***
 Run Multiple Test Setup Steps
@@ -49,20 +71,3 @@ Run Multiple Test Setup Steps
     Set Test Variable    ${user1}    ${data_results}[0]
     Set Test Variable    ${user2}    ${data_results}[1]
     Set Test Variable    ${user3}    ${data_results}[2]
-
-Find Transaction by senderId
-    [Arguments]    ${sender_id}
-    ${json_data}    {"items": [
-                    {"id": 1, "name": "Alice", "age": 30},
-                    {"id": 2, "name": "Bob", "age": 25},
-                    {"id": 3, "name": "Charlie", "age": 35}
-                ]}
-
-    # ${resp}=    GET    ${api}/testData/transactions
-    # ${data_results}    Set Variable    ${resp.json()}[results][0]
-    # {json_object}=    Parse Json    ${data_results}
-    # FOR ${senderId} IN @{data_results}
-    # Log ${senderId}
-    # # Perform other actions on ${item}
-    # END
-    # # Log To Console    ${data_results}[0][]
