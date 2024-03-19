@@ -73,7 +73,9 @@ Should be able to comment on a transaction
     ${Personal_List} =    Get Element     xpath=${Personal_List_XPath}\[text()="Mine"]
     Click   ${Personal_List}
 
-    ${Transaction} =    Get Element    xpath=//*[contains(@data-test, "transaction-item--7xanIywv9x")]Click       ${Transaction}
+    ${Transaction} =    Get Element    xpath=//*[contains(@data-test, "transaction-item--7xanIywv9x")]
+    
+    Click       ${Transaction}
 
     Fill Text       id=transaction-comment-input--7xanIywv9x        alright
     Keyboard Key       press        Enter
