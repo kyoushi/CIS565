@@ -69,17 +69,20 @@ and IronPython_ (.NET). Robot Framework `installation instructions`_
 cover installation procedure in detail. People already familiar with
 installing Python packages and having `pip`_ package manager installed, can
 simply run the following command::
+    pip install -r requirements.txt
+
+    or
 
     pip install robotframework
     
     Install node.js e.g. from https://nodejs.org/en/download/
     Update pip pip install -U pip to ensure latest version is used
     Install robotframework-browser from the commandline: pip install robotframework-browser
-    Install the node dependencies: run rfbrowser init in your shell
+    Install the node dependencies: 
+    run rfbrowser init (on Windows)
+    Run `rfbrowser init` (on Mac OS X)
     
     pip install robotframework-requests
-    
-    pip install robotframework-databaselibrary
 
 Robot Framework 3.0 and newer support Python 3 in addition to Python 2. Also
 this demo project is nowadays Python 3 compatible.
