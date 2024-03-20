@@ -28,12 +28,7 @@ should redirect to the home page after login
     # Open the browser and navigate to the login page
     Open Browser    ${host}/signin
 
-    # Fill in username and password
-    Fill Text    id=username    Katharina_Bernier
-    Fill Text    id=password    s3cret
-    # Click the "Sign In" button using its xpath
-    ${element} =    Get Element    xpath=//button/span[text()="Sign In"]
-    Click    ${element}
+    Login user    Katharina_Bernier    s3cret
 
     # Verify the current URL is the home page
     Get Url    equals    ${host}/
@@ -43,11 +38,7 @@ should remember a user after login
     # Open the browser and navigate to the login page
     Open Browser    ${host}/signin
 
-    # Fill in username and password
-    Fill Text    id=username    Katharina_Bernier
-    Fill Text    id=password    s3cret
-    # Click the "Sign In" button using its xpath
-    Click    xpath=//button/span[text()="Sign In"] 
+    Login user    Katharina_Bernier    s3cret 
 
     # Wait until the network activity settles, without this wait, cookie is not captured
     Wait Until Network Is Idle    timeout=3s
@@ -99,9 +90,8 @@ should allow a visitor to sign-up, login, and logout
     Log To Console    ${promise.result().body}
 
     # Login with the newly created user
-    Fill Text    css=#username   ${userInfo}[username]
-    Fill Text    css=#password   ${userInfo}[password]
-    Click    css=[data-test="signin-submit"]
+    Login user    ${userInfo}[username]    ${userInfo}[password]
+
     # Wait for onboarding dialog and UI elements to appear/disappear indicating successful login
     Wait For Elements State    css=[data-test="user-onboarding-dialog"]    visible    timeout=5 s
     Wait For Elements State    css=[data-test="list-skeleton"]    detached    timeout=5 s
@@ -190,10 +180,7 @@ should display signup errors
 should error for an invalid user
     Open Browser    ${host}/signin
 
-    # Fill in username and password
-    Fill Text    id=username    invalidUserName
-    Fill Text    id=password    invalidPa$$word
-    Click    css=[data-test="signin-submit"]
+    Login user    invalidUserName    invalidPa$$word
 
     Wait For Elements State    css=[data-test="signin-error"]    visible    timeout=5 s
     Get Text    css=[data-test="signin-error"]    contains    Username or password is invalid
@@ -202,10 +189,18 @@ should error for an invalid user
 should error for an invalid password for existing user
     Open Browser    ${host}/signin
 
-    # Fill in username and password
-    Fill Text    id=username    Tavares_Barrows
-    Fill Text    id=password    INVALID
-    Click    css=[data-test="signin-submit"]
+    Login user    Tavares_Barrows    INVALID
 
     Wait For Elements State    css=[data-test="signin-error"]    visible    timeout=5 s
     Get Text    css=[data-test="signin-error"]    contains    Username or password is invalid
+
+*** Keywords ***
+Login user
+    [Arguments]    ${password}    ${username}
+    [Documentation]    This keyword Logins User
+    # Fill in username and password
+    Fill Text    id=username    ${password}
+    Fill Text    id=password    ${username}
+    # Click the "Sign In" button using its xpath
+    ${element} =    Get Element    xpath=//button/span[text()="Sign In"]
+    Click    ${element}
