@@ -44,3 +44,13 @@ class CustomLib(object):
         
     def get_json_length(self, json_data):
         return len(json_data)
+
+    def is_string(self, variable):
+        if type(variable) == str:
+            print("Variable is a string")
+            return True
+        else:
+            print("Variable is not a string")
+            return False
+    
+
