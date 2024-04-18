@@ -1,0 +1,1336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.11.6 on darwin)" generated="2024-04-17T15:34:56.017563" rpa="false" schemaversion="5">
+<suite id="s1" name="Api Tests" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests">
+<suite id="s1-s1" name="Api-Banktransfers" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api-banktransfers.robot">
+<test id="s1-s1-t1" name="gets the list of bank transfers for a user" line="10">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.282241" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.282375" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.259271" elapsed="0.023205"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.283003" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:56.282767" elapsed="0.001556"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.419526" level="INFO">POST Request : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ path_url=/login?username=Katharina_Bernier&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.419676" level="INFO">POST Response : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-/12OI+4lcu44VNlBliIuWPgO69o"', 'Set-Cookie': 'connect.sid=s%3A5hlc1Hk1Hwm_15G5bT2ma2Loc2fEuP0x.pDvUhd4JLn%2BpgWRCtA%2F7g8FO%2Fh5kTdpMtHNl5cpbZoc; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":168137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Katharina_Bernier&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.284518" elapsed="0.135258"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.423273" level="INFO">GET Request : url=http://localhost:3001/bankTransfers 
+ path_url=/bankTransfers 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3A5hlc1Hk1Hwm_15G5bT2ma2Loc2fEuP0x.pDvUhd4JLn%2BpgWRCtA%2F7g8FO%2Fh5kTdpMtHNl5cpbZoc'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.423427" level="INFO">GET Response : url=http://localhost:3001/bankTransfers 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2562', 'ETag': 'W/"a02-STF/dipp4icshQG8kXe/timE2X0"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"transfers":[{"id":"WgiYCFrxjGIo","uuid":"2c07eba1-2027-476c-be42-4bb56b78187a","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":40101,"type":"deposit","transactionId":"jjxVhrcgwW-","createdAt":"2019-06-07T19:01:48.699Z","modifiedAt":"2020-05-21T06:01:23.277Z"},{"id":"TF3IvHYc0nML","uuid":"ef2b0cce-472a-4ea4-908e-a25a522e4883","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":42858,"type":"withdrawal","transactionId":"jjxVhrcgwW-","createdAt":"2019-06-02T01:47:50.847Z","modifiedAt":"2020-05-21T17:49:44.120Z"},{"id":"E_DtDW0TuRxz","uuid":"d000ce8f-02f6-4d8e-9b40-1085cb82e89f","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":49719,"type":"deposit","transactionId":"T_wxjLS6I4ef","createdAt":"2020-05-07T02:57:20.294Z","modifiedAt":"2020-05-21T18:31:50.704Z"},{"id":"6-AL2ZAXVWyj","uuid":"261fbd2a-982a-41f5-ae17-5427ee02b028","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":14588,"type":"withdrawal","transactionId":"T_wxjLS6I4ef","createdAt":"2019-05-31T11:26:34.538Z","modifiedAt":"2020-05-21T16:37:11.823Z"},{"id":"yEvLcf-OjtSJ","uuid":"687273ba-7c54-4b69-a1ac-9730bcc2f0f9","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":10516,"type":"deposit","transactionId":"VImPGjIMPrv","createdAt":"2019-12-16T13:27:21.382Z","modifiedAt":"2020-05-21T19:11:12.726Z"},{"id":"bKs5eOpDGfGH","uuid":"61021a37-abc3-478b-9b82-149c4ba18277","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":17229,"type":"withdrawal","transactionId":"VImPGjIMPrv","createdAt":"2019-09-30T11:59:15.649Z","modifiedAt":"2020-05-21T12:33:33.702Z"},{"id":"T4YhOkrUrf-v","uuid":"7e6f9a87-7cf5-4668-bcaf-837b07a02ebf","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":38076,"type":"deposit","transactionId":"Wtyzh9aNjk7","createdAt":"2020-01-28T03:34:22.538Z","modifiedAt":"2020-05-21T18:35:25.487Z"},{"id":"coDnLWoeB3DE","uuid":"a916b165-30cd-42e7-86f9-7766cd05018b","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":34810,"type":"withdrawal","transactionId":"Wtyzh9aNjk7","createdAt":"2020-01-26T01:14:59.157Z","modifiedAt":"2020-05-21T22:56:13.367Z"},{"id":"BXVikfD3N0vl","uuid":"ca655a4b-6a88-442c-a160-4b08ab4581e1","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":35555,"type":"deposit","transactionId":"sW7pzscVsTv","createdAt":"2019-10-11T09:13:04.539Z","modifiedAt":"2020-05-21T17:57:04.542Z"},{"id":"4MDl5ESgZDz1","uuid":"3dbb82d4-d4b5-40a3-8e08-0f570f3b64bc","userId":"t45AiwidW","source":"RskoB7r4Bic","amount":10042,"type":"withdrawal","transactionId":"sW7pzscVsTv","createdAt":"2019-07-22T19:24:58.477Z","modifiedAt":"2020-05-21T22:24:13.267Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:56.423558" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/bankTransfers</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.419982" elapsed="0.003590"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.424985" level="INFO">${data_results} = [{'id': 'WgiYCFrxjGIo', 'uuid': '2c07eba1-2027-476c-be42-4bb56b78187a', 'userId': 't45AiwidW', 'source': 'RskoB7r4Bic', 'amount': 40101, 'type': 'deposit', 'transactionId': 'jjxVhrcgwW-', 'createdAt':...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[transfers]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.423750" elapsed="0.001280"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.425839" level="INFO">Length is 10.</msg>
+<msg time="2024-04-17T15:34:56.425935" level="INFO">${data_length} = 10</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.425630" elapsed="0.000328"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.426186" elapsed="0.000505"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[transfers][0][userId]</arg>
+<arg>t45AiwidW</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.427015" elapsed="0.001042"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:56.258655" elapsed="0.169586"/>
+</test>
+<status status="PASS" start="2024-04-17T15:34:56.039327" elapsed="0.389776"/>
+</suite>
+<suite id="s1-s2" name="Api-Notifications" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api-notifications.robot">
+<test id="s1-s2-t1" name="gets a list of notifications for a user" line="12">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.448411" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.448470" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.433689" elapsed="0.014830"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.448844" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:56.448687" elapsed="0.000267"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.563397" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.563476" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3ADM0UNpA9xrTPhS0Qcid3si85Oaq74dP5.roEMJRQRDLLReyKTXB6%2BJAeF6aJYSeezGH7jET3%2FETY; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.449070" elapsed="0.114474"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.566960" level="INFO">GET Request : url=http://localhost:3001/notifications 
+ path_url=/notifications 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ADM0UNpA9xrTPhS0Qcid3si85Oaq74dP5.roEMJRQRDLLReyKTXB6%2BJAeF6aJYSeezGH7jET3%2FETY'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.567004" level="INFO">GET Response : url=http://localhost:3001/notifications 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2167', 'ETag': 'W/"877-BKcRDwjh/TdfevtX0EDcYcPdzTo"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"userFullName":"Arely Kertzmann","id":"lOtrcNS2HSQS","uuid":"78263b19-13af-4045-8f35-94c7cb9cf664","userId":"qywYp6hS0U","transactionId":"CYsWTTXPOOKx","status":"requested","isRead":false,"createdAt":"2019-12-27T17:26:57.087Z","modifiedAt":"2020-05-21T18:58:24.867Z"},{"userFullName":"Edgar Johns","id":"RIEHA01vEuda","uuid":"754907ec-53ad-45f6-9d4b-6106a02aafe4","userId":"qywYp6hS0U","likeId":"MC54o2D5r9aU","transactionId":"WIHpqM0xpcTx","isRead":false,"createdAt":"2019-08-03T21:19:53.947Z","modifiedAt":"2020-05-21T18:46:30.551Z"},{"userFullName":"Kaylin Homenick","id":"7pgWv8ixtxTH","uuid":"faee5f7d-9145-452b-b89f-583b1f9435c9","userId":"qywYp6hS0U","transactionId":"mEYl_ZSc5Qqe","status":"requested","isRead":false,"createdAt":"2020-02-13T23:07:48.541Z","modifiedAt":"2020-05-21T17:41:40.929Z"},{"userFullName":"Arely Kertzmann","id":"6JkRSkXFnY_Y","uuid":"06950c81-5992-4879-8dd5-7b00558297d7","userId":"qywYp6hS0U","transactionId":"WIHpqM0xpcTx","status":"requested","isRead":false,"createdAt":"2019-05-26T20:55:20.886Z","modifiedAt":"2020-05-21T16:11:59.486Z"},{"userFullName":"Ibrahim Dickens","id":"jrb75_Gp6VLn","uuid":"38cb2908-4412-479c-a250-e6679a083ce1","userId":"qywYp6hS0U","commentId":"YarNHJR_5Rh6","transactionId":"6MCm9R1dkLk_","isRead":false,"createdAt":"2019-08-09T10:01:18.031Z","modifiedAt":"2020-05-21T15:58:12.814Z"},{"userFullName":"Kaylin Homenick","id":"25Z84l9HRPtf","uuid":"bab143a0-d15e-4c65-9784-1dbfb2a62c21","userId":"qywYp6hS0U","transactionId":"mEYl_ZSc5Qqe","status":"received","isRead":false,"createdAt":"2019-12-06T17:35:23.247Z","modifiedAt":"2020-05-21T10:23:46.433Z"},{"userFullName":"Arely Kertzmann","id":"A8bYtEPOVg4d","uuid":"bb671444-c6b5-4eee-ba88-0d1d851b70aa","userId":"qywYp6hS0U","transactionId":"WIHpqM0xpcTx","status":"received","isRead":false,"createdAt":"2019-10-11T14:05:57.472Z","modifiedAt":"2020-05-21T09:33:03.465Z"},{"userFullName":"Arely Kertzmann","id":"U5yPg0ZJFCL2","uuid":"93621c51-3e8f-451b-b42d-545d4d84a229","userId":"qywYp6hS0U","transactionId":"CYsWTTXPOOKx","status":"received","isRead":false,"createdAt":"2019-07-12T22:08:18.771Z","modifiedAt":"2020-05-21T02:32:10.762Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:56.567116" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/notifications</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.563871" elapsed="0.003256"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.568366" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.567290" elapsed="0.001090"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.568649" elapsed="0.000352"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.570162" level="INFO">${data_results} = [{'userFullName': 'Arely Kertzmann', 'id': 'lOtrcNS2HSQS', 'uuid': '78263b19-13af-4045-8f35-94c7cb9cf664', 'userId': 'qywYp6hS0U', 'transactionId': 'CYsWTTXPOOKx', 'status': 'requested', 'isRead': Fal...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[results]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.569148" elapsed="0.001029"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.570694" level="INFO">Length is 8.</msg>
+<msg time="2024-04-17T15:34:56.570804" level="INFO">${data_length} = 8</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.570315" elapsed="0.000502"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.570965" elapsed="0.000208"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:56.433057" elapsed="0.138523"/>
+</test>
+<test id="s1-s2-t2" name="creates notifications for transaction, like and comment" line="23">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.588300" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.588438" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.573897" elapsed="0.014627"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.589185" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:56.589003" elapsed="0.000555"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.705907" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.705979" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3ACmbvd_LqWfhyGCMMNUn7tuWFhJhKesDp.Vx6lFxpWNi%2B01xyYMwSP2PsMsLo360SyD8CGIBRTxJ8; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.589984" elapsed="0.116061"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.708214" level="INFO">${body} = {'items': [{'type': 'payment', 'transactionId': 'CYsWTTXPOOKx', 'status': 'received'}, {'type': 'like', 'transactionId': 'WIHpqM0xpcTx', 'likeId': 'MC54o2D5r9aU'}, {'type': 'comment', 'transactionId':...</msg>
+<var>${body}</var>
+<arg>json.loads($json_string)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.706203" elapsed="0.002036"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.723708" level="INFO">POST Request : url=http://localhost:3001/notifications/bulk 
+ path_url=/notifications/bulk 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ACmbvd_LqWfhyGCMMNUn7tuWFhJhKesDp.Vx6lFxpWNi%2B01xyYMwSP2PsMsLo360SyD8CGIBRTxJ8', 'Content-Length': '247', 'Content-Type': 'application/json'} 
+ body=b'{"items": [{"type": "payment", "transactionId": "CYsWTTXPOOKx", "status": "received"}, {"type": "like", "transactionId": "WIHpqM0xpcTx", "likeId": "MC54o2D5r9aU"}, {"type": "comment", "transactionId": "6MCm9R1dkLk_", "commentId": "YarNHJR_5Rh6"}]}' 
+ </msg>
+<msg time="2024-04-17T15:34:56.723817" level="INFO">POST Response : url=http://localhost:3001/notifications/bulk 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '722', 'ETag': 'W/"2d2-CM3pmWg64xSR8izEECiqJdN+Ab0"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"F1BxyIZmY","uuid":"e4afde0c-c293-4a3d-834a-71aa5759ca47","userId":"qywYp6hS0U","transactionId":"CYsWTTXPOOKx","status":"received","isRead":false,"createdAt":"2024-04-17T22:34:56.711Z","modifiedAt":"2024-04-17T22:34:56.711Z"},{"id":"T16cK5baON","uuid":"af442ace-ad61-47a7-a8e5-115acf35d4b2","userId":"qywYp6hS0U","transactionId":"WIHpqM0xpcTx","likeId":"MC54o2D5r9aU","isRead":false,"createdAt":"2024-04-17T22:34:56.715Z","modifiedAt":"2024-04-17T22:34:56.715Z"},{"id":"3ssrmNHSd9","uuid":"e51164cc-d989-46a2-920e-2c827868f404","userId":"qywYp6hS0U","transactionId":"6MCm9R1dkLk_","commentId":"YarNHJR_5Rh6","isRead":false,"createdAt":"2024-04-17T22:34:56.720Z","modifiedAt":"2024-04-17T22:34:56.720Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:56.723935" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/notifications/bulk</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.708448" elapsed="0.015511"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.724952" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.724201" elapsed="0.000787"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.725175" elapsed="0.000329"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.726056" level="INFO">${data_results} = [{'id': 'F1BxyIZmY', 'uuid': 'e4afde0c-c293-4a3d-834a-71aa5759ca47', 'userId': 'qywYp6hS0U', 'transactionId': 'CYsWTTXPOOKx', 'status': 'received', 'isRead': False, 'createdAt': '2024-04-17T22:34:56.7...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[results]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.725618" elapsed="0.000450"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.726304" level="INFO">Length is 3.</msg>
+<msg time="2024-04-17T15:34:56.726520" level="INFO">${data_length} = 3</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.726176" elapsed="0.000376"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} == 3</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.726761" elapsed="0.000156"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${body}[items][0][transactionId]</arg>
+<arg>${resp.json()}[results][0][transactionId]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.726990" elapsed="0.000332"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:56.572240" elapsed="0.155182"/>
+</test>
+<status status="PASS" start="2024-04-17T15:34:56.429747" elapsed="0.298211"/>
+</suite>
+<suite id="s1-s3" name="Api-Transactions" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api-transactions.robot">
+<test id="s1-s3-t1" name="gets a list of transactions for user" line="10">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.744643" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.744957" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.731888" elapsed="0.013219"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.745539" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:56.745421" elapsed="0.000199"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.872877" level="INFO">POST Request : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ path_url=/login?username=Katharina_Bernier&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.873034" level="INFO">POST Response : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-/12OI+4lcu44VNlBliIuWPgO69o"', 'Set-Cookie': 'connect.sid=s%3AFgIQhUg-_SC_JFeo1cvycpGQAR_Do88h.bIpeNjuUdzQftSNUK4XNKrtf7GduH4uJFZUT8oKAjfc; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":168137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Katharina_Bernier&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.745839" elapsed="0.127288"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.900356" level="INFO">GET Request : url=http://localhost:3001/transactions 
+ path_url=/transactions 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AFgIQhUg-_SC_JFeo1cvycpGQAR_Do88h.bIpeNjuUdzQftSNUK4XNKrtf7GduH4uJFZUT8oKAjfc'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.900522" level="INFO">GET Response : url=http://localhost:3001/transactions 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '6842', 'ETag': 'W/"1aba-sNt7Nq+7MK/pG3NGYQ2YnGOa7Ck"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":true,"totalPages":24},"results":[{"receiverName":"Edgar Johns","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"-7xanIywv9x","uuid":"36246a0f-1a60-4279-876b-a64ad9fe0e93","source":"RskoB7r4Bic","amount":25971,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":29046,"status":"pending","requestStatus":"","requestResolvedAt":"2020-06-06T13:14:48.320Z","createdAt":"2020-04-24T04:30:01.644Z","modifiedAt":"2020-05-21T23:54:48.404Z"},{"receiverName":"Edgar Johns","senderName":"Ibrahim Dickens","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","likes":[],"comments":[],"id":"OeGyvqzQQQ9N","uuid":"c4000af5-fade-4316-b597-d79eb6d36f3e","source":"rLn5MeHrzAc","amount":14036,"description":"Payment: 24VniajY1y to t45AiwidW","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"24VniajY1y","balanceAtCompletion":29430,"status":"complete","requestStatus":"","requestResolvedAt":"2020-02-07T18:50:22.706Z","createdAt":"2019-11-27T16:40:38.188Z","modifiedAt":"2020-05-21T23:53:36.269Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"lk8AKDAM1CAI","uuid":"616f7509-7bd9-4ef8-82df-5be45dfeec71","source":"rLn5MeHrzAc","amount":36314,"description":"Payment: t45AiwidW to 24VniajY1y","privacyLevel":"contacts","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":7941,"status":"complete","requestStatus":"","requestResolvedAt":"2021-05-06T17:49:09.358Z","createdAt":"2020-05-12T00:54:04.410Z","modifiedAt":"2020-05-21T23:41:58.914Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"Tu9tYdDt7aQc","uuid":"cc1a49fc-8c47-41e5-954a-5de030467d56","source":"rLn5MeHrzAc","amount":16854,"description":"Payment: t45AiwidW to 24VniajY1y","privacyLevel":"private","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":44748,"status":"pending","requestStatus":"","requestResolvedAt":"2020-12-12T19:32:37.553Z","createdAt":"2020-04-13T23:45:13.504Z","modifiedAt":"2020-05-21T23:20:02.974Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"D4a44CsAh2M","uuid":"632f36cd-b558-4fa9-ac54-33310f9df51f","source":"RskoB7r4Bic","amount":39390,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"private","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":12468,"status":"pending","requestStatus":"","requestResolvedAt":"2021-01-07T22:05:52.582Z","createdAt":"2020-02-13T06:25:07.300Z","modifiedAt":"2020-05-21T23:09:51.983Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"52aE38vMx3E","uuid":"5c56fc74-c382-4675-aa46-879792c33895","source":"RskoB7r4Bic","amount":7195,"description":"Payment: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":22183,"status":"pending","requestStatus":"","requestResolvedAt":"2020-10-16T14:46:11.717Z","createdAt":"2019-12-06T12:17:41.249Z","modifiedAt":"2020-05-21T23:09:07.419Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"WOdaaSmPEdVt","uuid":"3e688113-2bdd-4e40-aa93-b04ed3fd4f27","source":"rLn5MeHrzAc","amount":42697,"description":"Request: 24VniajY1y to t45AiwidW","privacyLevel":"private","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":22740,"status":"complete","requestStatus":"accepted","requestResolvedAt":"2020-07-09T14:36:53.220Z","createdAt":"2020-01-27T04:38:45.567Z","modifiedAt":"2020-05-21T23:07:14.021Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"9SRJPNYRm7hy","uuid":"a2730ebf-ed88-4c20-878b-a5c3abe6c53f","source":"rLn5MeHrzAc","amount":33855,"description":"Payment: t45AiwidW to 24VniajY1y","privacyLevel":"contacts","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":25753,"status":"complete","requestStatus":"","requestResolvedAt":"2019-09-09T07:58:16.292Z","createdAt":"2019-08-13T23:59:02.213Z","modifiedAt":"2020-05-21T23:04:38.240Z"},{"receiverName":"Edgar Johns","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"RDe63xjR4uU","uuid":"360f5d5d-fd3e-4a44-b023-ae9e190dd733","source":"RskoB7r4Bic","amount":11933,"description":"Payment: qywYp6hS0U to t45AiwidW","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":11074,"status":"pending","requestStatus":"","requestResolvedAt":"2020-01-30T17:02:30.610Z","createdAt":"2019-06-27T12:52:35.473Z","modifiedAt":"2020-05-21T23:03:18.465Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"AqCrBljRml36","uuid":"14857a25-4653-4137-af1c-8b093da73193","source":"rLn5MeHrzAc","amount":21091,"description":"Payment: t45AiwidW to 24VniajY1y","privacyLevel":"private","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":9617,"status":"complete","requestStatus":"","requestResolvedAt":"2020-03-08T06:59:09.098Z","createdAt":"2019-10-21T08:12:21.156Z","modifiedAt":"2020-05-21T23:03:05.701Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:56.901176" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/transactions</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.873329" elapsed="0.027865"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.902176" level="INFO">${data_results} = [{'receiverName': 'Edgar Johns', 'senderName': 'Arely Kertzmann', 'receiverAvatar': 'https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg', 'senderAvatar': 'https://cypress-realworld-app-...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[results]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.901375" elapsed="0.000835"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.902716" level="INFO">Length is 10.</msg>
+<msg time="2024-04-17T15:34:56.902770" level="INFO">${data_length} = 10</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.902425" elapsed="0.000357"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} &gt; 0</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.902897" elapsed="0.000222"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.903694" level="INFO">${first_transaction} = {'receiverName': 'Edgar Johns', 'senderName': 'Arely Kertzmann', 'receiverAvatar': 'https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg', 'senderAvatar': 'https://cypress-realworld-app-s...</msg>
+<var>${first_transaction}</var>
+<arg>${resp.json()}[results][0]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.903332" elapsed="0.000374"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.904080" level="INFO">Value of first_transaction["senderName"]: Arely Kertzmann</msg>
+<arg>Value of first_transaction["senderName"]: ${first_transaction["senderName"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.903785" elapsed="0.000313"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2024-04-17T15:34:56.904493" level="INFO">Value of first_transaction["receiverName"]: Edgar Johns</msg>
+<arg>Value of first_transaction["receiverName"]: ${first_transaction["receiverName"]}</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.904222" elapsed="0.000290"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not "${first_transaction['senderName']}"</arg>
+<arg>Fail</arg>
+<arg>Sender not found in the first transaction</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.904657" elapsed="0.000351"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>not "${first_transaction['receiverName']}"</arg>
+<arg>Fail</arg>
+<arg>Receiver not found in the first transaction</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.905090" elapsed="0.000411"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:56.731612" elapsed="0.174309"/>
+</test>
+<test id="s1-s3-t2" name="gets a list of pending request transactions for user" line="28">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.943959" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:56.944017" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:56 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.907467" elapsed="0.036599"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:56.944933" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:56.944788" elapsed="0.000249"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.355604" level="INFO">POST Request : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ path_url=/login?username=Katharina_Bernier&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.355684" level="INFO">POST Response : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-/12OI+4lcu44VNlBliIuWPgO69o"', 'Set-Cookie': 'connect.sid=s%3Aw48dl57DpTGB-7VXjjIzVvNP1VyEwZEH.oXfGbeiqOyziH0KYP1qfoDFKBfif5It14LP4rcDZCGE; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":168137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Katharina_Bernier&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:56.945288" elapsed="0.410569"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.356439" level="INFO">${query_params} = {'requestStatus': 'pending'}</msg>
+<var>${query_params}</var>
+<arg>requestStatus=pending</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.356065" elapsed="0.000455"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.365133" level="INFO">GET Request : url=http://localhost:3001/transactions?requestStatus=pending 
+ path_url=/transactions?requestStatus=pending 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3Aw48dl57DpTGB-7VXjjIzVvNP1VyEwZEH.oXfGbeiqOyziH0KYP1qfoDFKBfif5It14LP4rcDZCGE'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.365194" level="INFO">GET Response : url=http://localhost:3001/transactions?requestStatus=pending 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '6650', 'ETag': 'W/"19fa-On5Ooue0U0Lws4JEiBULnvsv9R8"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"pageData":{"page":1,"limit":10,"hasNextPages":true,"totalPages":7},"results":[{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"lN_5TriHky9","uuid":"956c570c-9afa-400d-b371-aa6782d0b571","source":"RskoB7r4Bic","amount":1707,"description":"Request: qywYp6hS0U to t45AiwidW","privacyLevel":"contacts","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":12658,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-05-27T05:50:48.447Z","modifiedAt":"2020-05-21T22:57:14.865Z"},{"receiverName":"Edgar Johns","senderName":"Ibrahim Dickens","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","likes":[],"comments":[],"id":"UKvl6huiDrD3","uuid":"cba40612-bb1b-4f63-b6ee-b2c85f9b5045","source":"rLn5MeHrzAc","amount":14798,"description":"Request: t45AiwidW to 24VniajY1y","privacyLevel":"private","receiverId":"t45AiwidW","senderId":"24VniajY1y","balanceAtCompletion":1050,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-09-17T07:34:23.603Z","modifiedAt":"2020-05-21T22:57:10.793Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"deOv2EAjW8x","uuid":"dfb3b88a-818f-4b6e-b1cd-f1babc54d7db","source":"RskoB7r4Bic","amount":40690,"description":"Request: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":26214,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2020-05-17T07:35:12.525Z","modifiedAt":"2020-05-21T22:53:54.348Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"4c5O5GA4WKfH","uuid":"c77fedef-1aa4-4e31-ba4b-d5365564f97c","source":"rLn5MeHrzAc","amount":12467,"description":"Request: 24VniajY1y to t45AiwidW","privacyLevel":"private","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":17757,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2020-02-06T23:24:57.287Z","modifiedAt":"2020-05-21T22:08:03.805Z"},{"receiverName":"Arely Kertzmann","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"00QMQil0hH2","uuid":"5c82f477-94f5-4e4f-a780-23ea1d457b27","source":"RskoB7r4Bic","amount":16531,"description":"Request: qywYp6hS0U to t45AiwidW","privacyLevel":"public","receiverId":"qywYp6hS0U","senderId":"t45AiwidW","balanceAtCompletion":2677,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2020-04-12T08:29:23.334Z","modifiedAt":"2020-05-21T21:31:15.490Z"},{"receiverName":"Edgar Johns","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"OY3b90Fz0vF","uuid":"3f1cc90f-a6fe-4653-98b1-589234a4dddf","source":"RskoB7r4Bic","amount":34261,"description":"Request: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":25693,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-08-07T10:03:42.818Z","modifiedAt":"2020-05-21T21:30:38.755Z"},{"receiverName":"Edgar Johns","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"08kJEgK26O6","uuid":"d4d46202-edf6-4d9b-94cd-204cb8b4dc8b","source":"RskoB7r4Bic","amount":27504,"description":"Request: t45AiwidW to qywYp6hS0U","privacyLevel":"public","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":34634,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2020-02-26T09:08:54.836Z","modifiedAt":"2020-05-21T21:30:17.683Z"},{"receiverName":"Edgar Johns","senderName":"Arely Kertzmann","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","likes":[],"comments":[],"id":"vwV9sWbhp3e","uuid":"d84ebe0f-6bab-4ac8-ae88-8ab70517f300","source":"RskoB7r4Bic","amount":43146,"description":"Request: t45AiwidW to qywYp6hS0U","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"qywYp6hS0U","balanceAtCompletion":4401,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-09-22T22:52:12.669Z","modifiedAt":"2020-05-21T20:33:08.341Z"},{"receiverName":"Ibrahim Dickens","senderName":"Edgar Johns","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","likes":[],"comments":[],"id":"wmbOAl6SBbkx","uuid":"f7b37200-cb61-4562-a605-f6f3b0ae230a","source":"rLn5MeHrzAc","amount":23561,"description":"Request: 24VniajY1y to t45AiwidW","privacyLevel":"private","receiverId":"24VniajY1y","senderId":"t45AiwidW","balanceAtCompletion":12418,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-11-04T05:50:26.396Z","modifiedAt":"2020-05-21T20:25:26.645Z"},{"receiverName":"Edgar Johns","senderName":"Ibrahim Dickens","receiverAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","senderAvatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","likes":[],"comments":[],"id":"Rr8QIJYylP6M","uuid":"c3f0efa3-9073-411f-83b3-fe91f64b7ad6","source":"rLn5MeHrzAc","amount":11516,"description":"Request: t45AiwidW to 24VniajY1y","privacyLevel":"contacts","receiverId":"t45AiwidW","senderId":"24VniajY1y","balanceAtCompletion":24603,"status":"pending","requestStatus":"pending","requestResolvedAt":"","createdAt":"2019-12-21T12:52:26.422Z","modifiedAt":"2020-05-21T19:53:38.319Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:57.365719" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/transactions</arg>
+<arg>params=${query_params}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.356679" elapsed="0.009076"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.366278" level="INFO">Argument types are:
+&lt;class 'int'&gt;
+&lt;class 'str'&gt;</msg>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.365973" elapsed="0.000334"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:56.906843" elapsed="0.459568"/>
+</test>
+<test id="s1-s3-t3" name="Creates a new payment" line="41">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.382368" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.383849" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.366939" elapsed="0.017001"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.384341" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:57.384193" elapsed="0.000232"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.502780" level="INFO">POST Request : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ path_url=/login?username=Katharina_Bernier&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.502872" level="INFO">POST Response : url=http://localhost:3001/login?username=Katharina_Bernier&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '479', 'ETag': 'W/"1df-/12OI+4lcu44VNlBliIuWPgO69o"', 'Set-Cookie': 'connect.sid=s%3ADiPskO_bZmCZK2rl-lyEOl0ynxxAn941.NYz%2FDtlG62ReGJTGG6XwhVmkRxZVkPViYO5%2Bd4%2Bshmc; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":168137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Katharina_Bernier&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.384524" elapsed="0.118400"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.503336" level="INFO">${body} = {'source': 'RskoB7r4Bic', 'receiverId': 't45AiwidW', 'description': 'Payment: t45AiwidW to qywYp6hS0U', 'amount': 47212, 'privacyLevel': 'public'}</msg>
+<var>${body}</var>
+<arg>json.loads($json_string)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.503099" elapsed="0.000265"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.505945" level="INFO">POST Request : url=http://localhost:3001/transactions 
+ path_url=/transactions 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3ADiPskO_bZmCZK2rl-lyEOl0ynxxAn941.NYz%2FDtlG62ReGJTGG6XwhVmkRxZVkPViYO5%2Bd4%2Bshmc', 'Content-Length': '146', 'Content-Type': 'application/json'} 
+ body=b'{"source": "RskoB7r4Bic", "receiverId": "t45AiwidW", "description": "Payment: t45AiwidW to qywYp6hS0U", "amount": 47212, "privacyLevel": "public"}' 
+ </msg>
+<msg time="2024-04-17T15:34:57.505984" level="INFO">POST Response : url=http://localhost:3001/transactions 
+ status=422, reason=Unprocessable Entity 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '80', 'ETag': 'W/"50-/HvtOS4/GJugV1cR8hWEjQT6rDg"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"errors":[{"msg":"Invalid value","param":"transactionType","location":"body"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:57.506089" level="FAIL">HTTPError: 422 Client Error: Unprocessable Entity for url: http://localhost:3001/transactions</msg>
+<var>${response}</var>
+<arg>alias</arg>
+<arg>${api}/transactions</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="FAIL" start="2024-04-17T15:34:57.503452" elapsed="0.004974">HTTPError: 422 Client Error: Unprocessable Entity for url: http://localhost:3001/transactions</status>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${response.status_code}</arg>
+<arg>200</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.508565" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${transaction_id}</var>
+<arg>${response.json()["transaction"]["id"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.508677" elapsed="0.000022"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>"${transaction_id}" != ""</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.508787" elapsed="0.000019"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${status}</var>
+<arg>${response.json()["transaction"]["status"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.508866" elapsed="0.000081"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${status}</arg>
+<arg>complete</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.509640" elapsed="0.000012"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<var>${request_status}</var>
+<arg>${response.json()["transaction"]["requestStatus"]}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.509736" elapsed="0.000018"/>
+</kw>
+<kw name="Should Be Equal As Strings" owner="BuiltIn">
+<arg>${request_status}</arg>
+<arg>None</arg>
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<status status="NOT RUN" start="2024-04-17T15:34:57.509863" elapsed="0.000013"/>
+</kw>
+<status status="FAIL" start="2024-04-17T15:34:57.366751" elapsed="0.143296">HTTPError: 422 Client Error: Unprocessable Entity for url: http://localhost:3001/transactions</status>
+</test>
+<status status="FAIL" start="2024-04-17T15:34:56.728629" elapsed="0.781724"/>
+</suite>
+<suite id="s1-s4" name="Api-Users" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api-users.robot">
+<test id="s1-s4-t1" name="GET /users gets a list of users" line="11">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.521899" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.522143" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.513983" elapsed="0.008238"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.525263" level="INFO">GET Request : url=http://localhost:3001/testData/users 
+ path_url=/testData/users 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.525321" level="INFO">GET Response : url=http://localhost:3001/testData/users 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '2378', 'ETag': 'W/"94a-bXtfTxYH/EnsZk/kPfOB89qsTb8"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"t45AiwidW","uuid":"6383f84e-b511-44c5-a835-3ece1d781fa8","firstName":"Edgar","lastName":"Johns","username":"Katharina_Bernier","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Norene39@yahoo.com","phoneNumber":"625-316-9882","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/t45AiwidW.svg","defaultPrivacyLevel":"public","balance":168137,"createdAt":"2019-08-27T23:47:05.637Z","modifiedAt":"2020-05-21T11:02:22.857Z"},{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"},{"id":"bDjUb4ir5O","uuid":"b4ebe114-141c-4397-9346-dd37d788f71b","firstName":"Kaylin","lastName":"Homenick","username":"Allie2","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Rebeca35@yahoo.com","phoneNumber":"072-208-4283","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/bDjUb4ir5O.svg","defaultPrivacyLevel":"private","balance":164867,"createdAt":"2019-09-15T04:44:05.536Z","modifiedAt":"2020-05-21T18:25:10.341Z"},{"id":"24VniajY1y","uuid":"0b00a187-6cf6-4d34-8f59-b8a8eabdddf6","firstName":"Ibrahim","lastName":"Dickens","username":"Giovanna74","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Pearl56@gmail.com","phoneNumber":"974-916-8746","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/24VniajY1y.svg","defaultPrivacyLevel":"private","balance":145779,"createdAt":"2020-03-06T02:15:42.584Z","modifiedAt":"2020-05-21T09:25:42.974Z"},{"id":"tsHF6_D5oQ","uuid":"53315353-7ca6-4cd1-8fd6-af9fb5a9dd25","firstName":"Devon","lastName":"Becker","username":"Jessyca.Kuhic","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Jordy37@yahoo.com","phoneNumber":"277-189-3402","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/tsHF6_D5oQ.svg","defaultPrivacyLevel":"contacts","balance":75369,"createdAt":"2020-02-11T21:26:46.510Z","modifiedAt":"2020-05-21T15:15:33.944Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:57.525403" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>${api}/testData/users</arg>
+<arg>expected_status=200</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.522376" elapsed="0.003036"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.525884" level="INFO">${data_results} = [{'id': 't45AiwidW', 'uuid': '6383f84e-b511-44c5-a835-3ece1d781fa8', 'firstName': 'Edgar', 'lastName': 'Johns', 'username': 'Katharina_Bernier', 'password': '$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIG...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[results]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.525561" elapsed="0.000333"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.526043" level="INFO">Length is 5.</msg>
+<msg time="2024-04-17T15:34:57.526082" level="INFO">${data_length} = 5</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.525985" elapsed="0.000104"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} &gt; 1</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.526150" elapsed="0.000109"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:57.513471" elapsed="0.012967"/>
+</test>
+<test id="s1-s4-t2" name="GET /users/:userId get a user" line="18">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.537355" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.537407" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.526933" elapsed="0.010511"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.537790" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:57.537675" elapsed="0.000203"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.538003" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.634540" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.634602" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3A_B1ZpvkZ8Rzds6OfhUmVwStJJfkA3My1.sQk7QE6sidFkr0aTr9IPLn3yEPURIp8RkxjNzBe195U; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<msg time="2024-04-17T15:34:57.634763" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.537976" elapsed="0.096801"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.635251" level="INFO">${user_id} = qywYp6hS0U</msg>
+<var>${user_id}</var>
+<arg>${resp.json()}[user][id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.634931" elapsed="0.000330"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.635373" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.637583" level="INFO">GET Request : url=http://localhost:3001/users/qywYp6hS0U 
+ path_url=/users/qywYp6hS0U 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3A_B1ZpvkZ8Rzds6OfhUmVwStJJfkA3My1.sQk7QE6sidFkr0aTr9IPLn3yEPURIp8RkxjNzBe195U'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.637636" level="INFO">GET Response : url=http://localhost:3001/users/qywYp6hS0U 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<msg time="2024-04-17T15:34:57.637709" level="INFO">${resp_user} = &lt;Response [200]&gt;</msg>
+<var>${resp_user}</var>
+<arg>alias</arg>
+<arg>${api}/users/${user_id}</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.635359" elapsed="0.002374"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resp_user}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.637926" elapsed="0.000172"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resp_user.json()}[user]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.638180" elapsed="0.000298"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${resp_user.json()}[user]</arg>
+<arg>firstName</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.638549" elapsed="0.000243"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:57.526663" elapsed="0.112229"/>
+</test>
+<test id="s1-s4-t3" name="GET /users/:userId error when invalid userId" line="28">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.646702" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.646916" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.639603" elapsed="0.007424"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.647477" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:57.647265" elapsed="0.000550"/>
+</kw>
+<kw name="Post Request" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.647975" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.828797" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.828862" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3AXY_bMjtmMI1M8NyTmMt_kSEcW9L4rshQ.omjacw5Epkm0CFWC2VDTAIlk0m28AmSgadeqGA7gtZk; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<msg time="2024-04-17T15:34:57.829272" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>*DEPRECATED* Please use `POST On Session` instead.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.647929" elapsed="0.181397"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.830206" level="INFO">${user_id} = qywYp6hS0U</msg>
+<var>${user_id}</var>
+<arg>${resp.json()}[user][id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.829737" elapsed="0.000484"/>
+</kw>
+<kw name="Get Request" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.830357" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.833941" level="INFO">GET Request : url=http://localhost:3001/users/123 
+ path_url=/users/123 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AXY_bMjtmMI1M8NyTmMt_kSEcW9L4rshQ.omjacw5Epkm0CFWC2VDTAIlk0m28AmSgadeqGA7gtZk'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.833993" level="INFO">GET Response : url=http://localhost:3001/users/123 
+ status=422, reason=Unprocessable Entity 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '87', 'ETag': 'W/"57-FiEyW2cbTxYElh39o4daC1p8LCI"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"errors":[{"value":"123","msg":"Invalid value","param":"userId","location":"params"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:57.834062" level="INFO">${resp_user} = &lt;Response [422]&gt;</msg>
+<var>${resp_user}</var>
+<arg>alias</arg>
+<arg>${api}/users/123</arg>
+<doc>*DEPRECATED* Please use `GET On Session` instead.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.830342" elapsed="0.003729"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.835032" level="INFO">${status_code} = 422</msg>
+<var>${status_code}</var>
+<arg>${resp_user.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.834199" elapsed="0.000867"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>422</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.835307" elapsed="0.000224"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:57.639192" elapsed="0.196599"/>
+</test>
+<status status="PASS" start="2024-04-17T15:34:57.510825" elapsed="0.325487"/>
+</suite>
+<suite id="s1-s5" name="Api Bankaccounts" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api_bankaccounts.robot">
+<test id="s1-s5-t1" name="gets a list of bank accounts for user" line="12">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.850520" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.850661" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.838975" elapsed="0.011745"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.851347" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:57.851058" elapsed="0.000501"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.972052" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.972177" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3AJQdzwEIs5HhZp2H90X6qLKfQt6EfrMBq.WoOE7sg5%2F56ar3lOKZ8nBx81pURkQwKos25Kz3NmnYA; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.851781" elapsed="0.120466"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.975917" level="INFO">GET Request : url=http://localhost:3001/bankAccounts 
+ path_url=/bankAccounts 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AJQdzwEIs5HhZp2H90X6qLKfQt6EfrMBq.WoOE7sg5%2F56ar3lOKZ8nBx81pURkQwKos25Kz3NmnYA'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.976050" level="INFO">GET Response : url=http://localhost:3001/bankAccounts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '292', 'ETag': 'W/"124-4FQMUyNV+o462BQB1a3PsgHcpt8"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"results":[{"id":"lWfxENA5ZNy","uuid":"873abef5-130d-466b-acb0-7df446937389","userId":"qywYp6hS0U","bankName":"Kshlerin - Ledner Bank","accountNumber":"3859571950","routingNumber":"024971142","isDeleted":false,"createdAt":"2019-12-14T22:41:09.548Z","modifiedAt":"2020-05-21T09:46:44.754Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:57.976169" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/bankAccounts</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.972421" elapsed="0.003767"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.976645" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.976355" elapsed="0.000301"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.976744" elapsed="0.000099"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.977535" level="INFO">${data_results} = [{'id': 'lWfxENA5ZNy', 'uuid': '873abef5-130d-466b-acb0-7df446937389', 'userId': 'qywYp6hS0U', 'bankName': 'Kshlerin - Ledner Bank', 'accountNumber': '3859571950', 'routingNumber': '024971142', 'isDel...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[results]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.977009" elapsed="0.000556"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:57.977743" level="INFO">Length is 1.</msg>
+<msg time="2024-04-17T15:34:57.977798" level="INFO">${data_length} = 1</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.977664" elapsed="0.000164"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} == 1</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.977910" elapsed="0.000114"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${resp.json()}[results][0][bankName]</arg>
+<arg>Kshlerin - Ledner Bank</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.978541" elapsed="0.000649"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:57.838617" elapsed="0.140690"/>
+</test>
+<test id="s1-s5-t2" name="gets a bank account" line="24">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.987298" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:57.987358" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:57 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.979728" elapsed="0.007669"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:57.987752" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:57.987614" elapsed="0.000257"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.117222" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.117280" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3AQNL6ZLTI7rArlTOwTYatoAGeEKnf-OSm.ndD02hLocX0onoE2XC5bKEL6HIxCr6mltTUCTxs1wl8; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:57.988019" elapsed="0.129451"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.121284" level="INFO">GET Request : url=http://localhost:3001/bankAccounts/lWfxENA5ZNy 
+ path_url=/bankAccounts/lWfxENA5ZNy 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AQNL6ZLTI7rArlTOwTYatoAGeEKnf-OSm.ndD02hLocX0onoE2XC5bKEL6HIxCr6mltTUCTxs1wl8'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.121398" level="INFO">GET Response : url=http://localhost:3001/bankAccounts/lWfxENA5ZNy 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '290', 'ETag': 'W/"122-SUOjXrPCxmbvV6N8SxHQ7OJu//U"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"account":{"id":"lWfxENA5ZNy","uuid":"873abef5-130d-466b-acb0-7df446937389","userId":"qywYp6hS0U","bankName":"Kshlerin - Ledner Bank","accountNumber":"3859571950","routingNumber":"024971142","isDeleted":false,"createdAt":"2019-12-14T22:41:09.548Z","modifiedAt":"2020-05-21T09:46:44.754Z"}} 
+ </msg>
+<msg time="2024-04-17T15:34:58.121523" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/bankAccounts/lWfxENA5ZNy</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.117796" elapsed="0.003744"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.122090" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.121752" elapsed="0.000348"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.122194" elapsed="0.000231"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${resp.json()}</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.122679" elapsed="0.000801"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.124510" level="INFO">${data_results} = {'id': 'lWfxENA5ZNy', 'uuid': '873abef5-130d-466b-acb0-7df446937389', 'userId': 'qywYp6hS0U', 'bankName': 'Kshlerin - Ledner Bank', 'accountNumber': '3859571950', 'routingNumber': '024971142', 'isDele...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[account]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.123667" elapsed="0.000858"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data_results}[bankName]</arg>
+<arg>Kshlerin - Ledner Bank</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.124843" elapsed="0.000201"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:57.979424" elapsed="0.146141"/>
+</test>
+<status status="PASS" start="2024-04-17T15:34:57.836651" elapsed="0.289229"/>
+</suite>
+<suite id="s1-s6" name="Api Contacts" source="/Users/gerardo.mitsuyfukazawa/CIS565/api_tests/api_contacts.robot">
+<test id="s1-s6-t1" name="gets a list of contacts by username" line="12">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.141744" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.141890" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.129770" elapsed="0.012207"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.142582" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:58.142338" elapsed="0.000322"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.262396" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.262524" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3AkOAvAXO6MN16c01PbNiuf9TRQ8AKfX1m.%2FQq5E0HsMB3YfKZBdce3oMpNKzJglu6JDqFj4POTJg4; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.142776" elapsed="0.119843"/>
+</kw>
+<kw name="GET On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.267572" level="INFO">GET Request : url=http://localhost:3001/contacts/Tavares_Barrows 
+ path_url=/contacts/Tavares_Barrows 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AkOAvAXO6MN16c01PbNiuf9TRQ8AKfX1m.%2FQq5E0HsMB3YfKZBdce3oMpNKzJglu6JDqFj4POTJg4'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.267645" level="INFO">GET Response : url=http://localhost:3001/contacts/Tavares_Barrows 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '601', 'ETag': 'W/"259-8PidEGIV+9XmVmTtrlyNCBKDRxM"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"contacts":[{"id":"65XIkDUOFJ","uuid":"0ff083fa-cbc7-47f4-840d-228e143774b8","userId":"qywYp6hS0U","contactUserId":"t45AiwidW","createdAt":"2020-01-03T03:40:23.930Z","modifiedAt":"2020-05-21T08:01:05.435Z"},{"id":"TtRSp6V3BY","uuid":"6468bfa9-9418-433f-b47e-60952f7abe71","userId":"qywYp6hS0U","contactUserId":"bDjUb4ir5O","createdAt":"2019-08-15T21:13:22.365Z","modifiedAt":"2020-05-21T22:25:35.728Z"},{"id":"_wjLQ5uguG","uuid":"914f60d3-522d-4b52-9d14-df9c5a3afa5b","userId":"qywYp6hS0U","contactUserId":"tsHF6_D5oQ","createdAt":"2019-07-20T18:05:45.827Z","modifiedAt":"2020-05-21T13:03:04.064Z"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:58.267747" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/contacts/Tavares_Barrows</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.263025" elapsed="0.004739"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.268801" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.268047" elapsed="0.000834"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.269133" elapsed="0.000340"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.270020" level="INFO">${data_results} = [{'id': '65XIkDUOFJ', 'uuid': '0ff083fa-cbc7-47f4-840d-228e143774b8', 'userId': 'qywYp6hS0U', 'contactUserId': 't45AiwidW', 'createdAt': '2020-01-03T03:40:23.930Z', 'modifiedAt': '2020-05-21T08:01:05....</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[contacts]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.269639" elapsed="0.000395"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${data_results}[0]</arg>
+<arg>userId</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.270134" elapsed="0.000117"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:58.129521" elapsed="0.140845"/>
+</test>
+<test id="s1-s6-t2" name="gets a list of contacts by username" line="22">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.280228" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.280440" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.270728" elapsed="0.009850"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.281192" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:58.281070" elapsed="0.000238"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.390158" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.390272" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3AfTFZ8ilKI2PpC7rhBXCDd9fWQ1goGm1n.e4aCjQewR%2BvkNjToHr8ZwRVOZS1GSE%2Bk14DEVBNYF6c; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.281439" elapsed="0.108927"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.391009" level="INFO">${body} = {'contactUserId': '24VniajY1y'}</msg>
+<var>${body}</var>
+<arg>json.loads($json_string)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.390627" elapsed="0.000400"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.398259" level="INFO">POST Request : url=http://localhost:3001/contacts 
+ path_url=/contacts 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3AfTFZ8ilKI2PpC7rhBXCDd9fWQ1goGm1n.e4aCjQewR%2BvkNjToHr8ZwRVOZS1GSE%2Bk14DEVBNYF6c', 'Content-Length': '31', 'Content-Type': 'application/json'} 
+ body=b'{"contactUserId": "24VniajY1y"}' 
+ </msg>
+<msg time="2024-04-17T15:34:58.398326" level="INFO">POST Response : url=http://localhost:3001/contacts 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '206', 'ETag': 'W/"ce-7QK9NOSh8S44viga8ES86/yx7XI"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"contact":{"id":"8G-qsCwGC","uuid":"260dffbb-f254-4b30-bcc6-9f2d968551cf","userId":"qywYp6hS0U","contactUserId":"24VniajY1y","createdAt":"2024-04-17T22:34:58.393Z","modifiedAt":"2024-04-17T22:34:58.393Z"}} 
+ </msg>
+<msg time="2024-04-17T15:34:58.398440" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/contacts</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.391135" elapsed="0.007324"/>
+</kw>
+<kw name="Convert To String" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.398936" level="INFO">${status_code} = 200</msg>
+<var>${status_code}</var>
+<arg>${resp.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.398613" elapsed="0.000358"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.399063" elapsed="0.000122"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.399556" level="INFO">${data_results} = {'contact': {'id': '8G-qsCwGC', 'uuid': '260dffbb-f254-4b30-bcc6-9f2d968551cf', 'userId': 'qywYp6hS0U', 'contactUserId': '24VniajY1y', 'createdAt': '2024-04-17T22:34:58.393Z', 'modifiedAt': '2024-04-1...</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.399291" elapsed="0.000276"/>
+</kw>
+<kw name="Is String" owner="CustomLib">
+<msg time="2024-04-17T15:34:58.399729" level="INFO">Variable is a string</msg>
+<msg time="2024-04-17T15:34:58.399773" level="INFO">${is_String} = True</msg>
+<var>${is_String}</var>
+<arg>${data_results}[contact][id]</arg>
+<status status="PASS" start="2024-04-17T15:34:58.399644" elapsed="0.000139"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${is_String}</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.399867" elapsed="0.000075"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${data_results}[contact][contactUserId]</arg>
+<arg>${body}[contactUserId]</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.400069" elapsed="0.000102"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:58.270566" elapsed="0.129679"/>
+</test>
+<test id="s1-s6-t3" name="error when invalid contactUserId" line="35">
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.408122" level="INFO">POST Request : url=http://localhost:3001/testData/seed 
+ path_url=/testData/seed 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.408210" level="INFO">POST Response : url=http://localhost:3001/testData/seed 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'text/plain; charset=utf-8', 'Content-Length': '2', 'ETag': 'W/"2-nOO9QiTIwXgNtWtBJezz8kv3SLc"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=OK 
+ </msg>
+<arg>${api}/testData/seed</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.400601" elapsed="0.007654"/>
+</kw>
+<kw name="Create Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.408528" level="INFO">Creating Session using : alias=alias, url=http://localhost:3001/login, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<status status="PASS" start="2024-04-17T15:34:58.408420" elapsed="0.000198"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.525331" level="INFO">POST Request : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ path_url=/login?username=Tavares_Barrows&amp;password=s3cret 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '0'} 
+ body=None 
+ </msg>
+<msg time="2024-04-17T15:34:58.525461" level="INFO">POST Response : url=http://localhost:3001/login?username=Tavares_Barrows&amp;password=s3cret 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '495', 'ETag': 'W/"1ef-gWBLMeTfg6Pcqu86F5MuuHfUbNo"', 'Set-Cookie': 'connect.sid=s%3A3_A7pvvEi7KNniOBu2Etd0ArGSSDQV4M.clqugsO8IY25iios7d6yG9Ndd2TE7un1n0oVC8p%2F3Lo; Path=/; HttpOnly', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"user":{"id":"qywYp6hS0U","uuid":"f96efce8-1909-4df4-b5cd-59883cd19c37","firstName":"Arely","lastName":"Kertzmann","username":"Tavares_Barrows","password":"$2a$10$5PXHGtcsckWtAprT5/JmluhR13f16BL8SIGhvAKNP.Dhxkt69FfzW","email":"Aniya_Powlowski36@hotmail.com","phoneNumber":"537-041-4355","avatar":"https://cypress-realworld-app-svgs.s3.amazonaws.com/qywYp6hS0U.svg","defaultPrivacyLevel":"private","balance":101805,"createdAt":"2019-09-09T13:48:45.489Z","modifiedAt":"2020-05-21T02:34:01.483Z"}} 
+ </msg>
+<arg>alias</arg>
+<arg>${api}/login</arg>
+<arg>params=username=Tavares_Barrows&amp;password=s3cret</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.408744" elapsed="0.116782"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.526035" level="INFO">${body} = {'contactUserId': 'abc'}</msg>
+<var>${body}</var>
+<arg>json.loads($json_string2)</arg>
+<arg>json</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.525671" elapsed="0.000431"/>
+</kw>
+<kw name="POST On Session" owner="RequestsLibrary">
+<msg time="2024-04-17T15:34:58.528876" level="INFO">POST Request : url=http://localhost:3001/contacts 
+ path_url=/contacts 
+ headers={'User-Agent': 'python-requests/2.22.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Cookie': 'connect.sid=s%3A3_A7pvvEi7KNniOBu2Etd0ArGSSDQV4M.clqugsO8IY25iios7d6yG9Ndd2TE7un1n0oVC8p%2F3Lo', 'Content-Length': '24', 'Content-Type': 'application/json'} 
+ body=b'{"contactUserId": "abc"}' 
+ </msg>
+<msg time="2024-04-17T15:34:58.528981" level="INFO">POST Response : url=http://localhost:3001/contacts 
+ status=422, reason=Unprocessable Entity 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': 'http://localhost:3000', 'Vary': 'Origin', 'Access-Control-Allow-Credentials': 'true', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '92', 'ETag': 'W/"5c-Wu3Rr5TdEmjA+0kYBbrXWyGSRrA"', 'Date': 'Wed, 17 Apr 2024 22:34:58 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"errors":[{"value":"abc","msg":"Invalid value","param":"contactUserId","location":"body"}]} 
+ </msg>
+<msg time="2024-04-17T15:34:58.529255" level="INFO">${resp} = &lt;Response [422]&gt;</msg>
+<var>${resp}</var>
+<arg>alias</arg>
+<arg>${api}/contacts</arg>
+<arg>json=${body}</arg>
+<arg>expected_status=422</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.526341" elapsed="0.002939"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.529919" level="INFO">${data_results} = [{'value': 'abc', 'msg': 'Invalid value', 'param': 'contactUserId', 'location': 'body'}]</msg>
+<var>${data_results}</var>
+<arg>${resp.json()}[errors]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.529555" elapsed="0.000377"/>
+</kw>
+<kw name="Get Length" owner="BuiltIn">
+<msg time="2024-04-17T15:34:58.530127" level="INFO">Length is 1.</msg>
+<msg time="2024-04-17T15:34:58.530154" level="INFO">${data_length} = 1</msg>
+<var>${data_length}</var>
+<arg>${data_results}</arg>
+<doc>Returns and logs the length of the given item as an integer.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.530054" elapsed="0.000107"/>
+</kw>
+<kw name="Should Be True" owner="BuiltIn">
+<arg>${data_length} == 1</arg>
+<doc>Fails if the given condition is not true.</doc>
+<status status="PASS" start="2024-04-17T15:34:58.530362" elapsed="0.000263"/>
+</kw>
+<status status="PASS" start="2024-04-17T15:34:58.400387" elapsed="0.130353"/>
+</test>
+<status status="PASS" start="2024-04-17T15:34:58.126142" elapsed="0.404842"/>
+</suite>
+<status status="FAIL" start="2024-04-17T15:34:56.019179" elapsed="2.512058"/>
+</suite>
+<statistics>
+<total>
+<stat pass="13" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="13" fail="1" skip="0" id="s1" name="Api Tests">Api Tests</stat>
+<stat pass="1" fail="0" skip="0" id="s1-s1" name="Api-Banktransfers">Api Tests.Api-Banktransfers</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s2" name="Api-Notifications">Api Tests.Api-Notifications</stat>
+<stat pass="2" fail="1" skip="0" id="s1-s3" name="Api-Transactions">Api Tests.Api-Transactions</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s4" name="Api-Users">Api Tests.Api-Users</stat>
+<stat pass="2" fail="0" skip="0" id="s1-s5" name="Api Bankaccounts">Api Tests.Api Bankaccounts</stat>
+<stat pass="3" fail="0" skip="0" id="s1-s6" name="Api Contacts">Api Tests.Api Contacts</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-04-17T15:34:57.538003" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.635373" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.647975" level="WARN">Keyword 'RequestsLibrary.Post Request' is deprecated. Please use `POST On Session` instead.</msg>
+<msg time="2024-04-17T15:34:57.830357" level="WARN">Keyword 'RequestsLibrary.Get Request' is deprecated. Please use `GET On Session` instead.</msg>
+<msg time="2024-04-17T15:34:58.270531" level="WARN">Multiple tests with name 'gets a list of contacts by username' executed in suite 'Api Tests.Api Contacts'.</msg>
+</errors>
+</robot>
