@@ -69,8 +69,9 @@ and IronPython_ (.NET). Robot Framework `installation instructions`_
 cover installation procedure in detail. People already familiar with
 installing Python packages and having `pip`_ package manager installed, can
 simply run the following command::
+    
     pip install -r requirements.txt
-
+    
     or
 
     pip install robotframework
@@ -80,7 +81,11 @@ simply run the following command::
     Install robotframework-browser from the commandline: pip install robotframework-browser
     Install the node dependencies: 
     run rfbrowser init (on Windows)
+    
     Run `rfbrowser init` (on Mac OS X)
+
+    if rfbrowser not found run:
+    python -m Browser.entry init
     
     pip install robotframework-requests
 
