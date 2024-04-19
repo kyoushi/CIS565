@@ -87,6 +87,17 @@ simply run the following command::
 Robot Framework 3.0 and newer support Python 3 in addition to Python 2. Also
 this demo project is nowadays Python 3 compatible.
 
+To run  `cypress-realworld-app`::
+    Install node -v 18
+    Install yarn
+       npm install --global yarn
+
+   Install:
+      yarn
+
+   To run app:
+      yarn dev
+
 Running single tests
 -------------
 
