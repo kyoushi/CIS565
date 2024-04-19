@@ -89,6 +89,10 @@ simply run the following command::
     
     pip install robotframework-requests
 
+    pip install requests
+
+    check console logs for errors and install any missing pip
+
 Robot Framework 3.0 and newer support Python 3 in addition to Python 2. Also
 this demo project is nowadays Python 3 compatible.
 
