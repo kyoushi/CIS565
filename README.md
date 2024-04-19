@@ -16,8 +16,8 @@ look like, and how to extend the framework with custom test libraries like `Requ
 Demo package
 ========================
 
-To get the demo webApp `cypress-realworld-app` clone https://github.com/cypress-io/cypress-realworld-app/tree/v1.0.18
-and follow the README file instructions.
+It looks like source code https://github.com/cypress-io/cypress-realworld-app/tree/v1.0.18 is broken
+and please download cypress-realworld-app.zip from https://github.com/kyoushi/CIS565
 
 __ `running demo`_
 
@@ -92,6 +92,7 @@ simply run the following command::
 Robot Framework 3.0 and newer support Python 3 in addition to Python 2. Also
 this demo project is nowadays Python 3 compatible.
 
+Unzip cypress-realworld-app.zip and navigate to folder
 To run  `cypress-realworld-app`::
     Install node -v 18
     Install yarn
