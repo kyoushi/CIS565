@@ -87,7 +87,7 @@ simply run the following command::
 Robot Framework 3.0 and newer support Python 3 in addition to Python 2. Also
 this demo project is nowadays Python 3 compatible.
 
-Running tests
+Running single tests
 -------------
 
 Test cases are executed with the ``robot`` command::
@@ -95,6 +95,16 @@ Test cases are executed with the ``robot`` command::
     robot test_name.robot
     or
     python -m robot -d Results test_name.robot
+
+Running test suites
+-------------
+
+Test cases are executed with the ``robot`` command::
+
+    robot -d ResultsUI --pythonpath . ui_tests
+    robot -d ResultsAI --pythonpath . api_tests
+    or
+    python -m robot -d ResultsUI --pythonpath . ui_tests
 
 .. note:: If you are using Robot Framework 2.9 or earlier, you need to
           use Python interpreter specific command ``pybot``, ``jybot`` or
